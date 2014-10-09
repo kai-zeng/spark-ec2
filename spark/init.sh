@@ -7,14 +7,18 @@ if [ -d "spark" ]; then
   return
 fi
 
+SPARK_VERSION=9.9.9
+
 # Github tag:
 if [[ "$SPARK_VERSION" == *\|* ]]
 then
   mkdir spark
   pushd spark
   git init
-  repo=`python -c "print '$SPARK_VERSION'.split('|')[0]"` 
-  git_hash=`python -c "print '$SPARK_VERSION'.split('|')[1]"`
+  #repo=`python -c "print '$SPARK_VERSION'.split('|')[0]"` 
+  #git_hash=`python -c "print '$SPARK_VERSION'.split('|')[1]"`
+  repo=https://github.com/amplab/bootstrap-sql.git 
+  git_hash=master
   git remote add origin $repo
   git fetch origin
   git checkout $git_hash
